@@ -14,7 +14,7 @@
     function Intervals(options) {
         this.options = $.extend({
             format      : 'JSON',
-            durationUnit: 'seconds', //'minutes'
+            durationUnit: 'minutes',
             promiseOptions: {
                 noCache: true,
             }
@@ -96,6 +96,8 @@
         this.options = $.extend({
         }, options || {} );
 
+
+        this.options.fileNameOrData = this.options.fileNameOrData || this.options.fileName || this.options.data;
         this.intervals = intervals;
 
         if (this.options.context){
