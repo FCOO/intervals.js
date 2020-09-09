@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="da" style="font-size: 100%">
+<head>
+	<title>fcoo.dk - intervals - Demo</title>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv='x-dns-prefetch-control' content='on'>
+
+	<meta name='copyright' content='FCOO'>
+	<meta name='owner' content='FCOO'>
+</head>
+
+<body>
+	<script src="bower_components.js"></script>
+	<script src="../src/intervals.js"></script>
+	<script>
+
+    intervals.addInterval({
+        wait: false,
+        duration      : 15,
+        fileNameOrData: 'data/test.json',
+        resolve       : function(data, interval){
+            console.log(moment().second(), data);
+        },
+        reject: function(error){ console.log('error', error); }
+    });
+/*
+    intervals.addInterval({
+        duration      : 15,
+        fileNameOrData: 'data/test.txt',
+        resolve       : function(data){ console.log(data); },
+        wait          : true,
+        format        : 'text'
+    });
+
+    intervals.addInterval({
+        duration      : 15,
+        fileNameOrData: 'data/testFINDESIKKE.txt',
+        resolve       : function(data, interval){ console.log(data); },
+        reject        : function(error, interval){ console.log('Reject', error.text, interval); },
+        wait          : true,
+        format        : 'text'
+    });
+*/
+    </script>
+</body>
+</html>
