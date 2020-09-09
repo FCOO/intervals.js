@@ -1,14 +1,12 @@
 {
-  "name": "intervals.js",
-  "version": "1.1.4",
-  "homepage": "https://github.com/FCOO/intervals.js",
+  "name": "intervals",
+  "version": "1.1.5",
+  "homepage": "https://github.com/FCOO/intervals",
   "authors": [
     "Niels Holt"
   ],
   "description": "",
-  "main": [
-    "dist/intervals.js"
-  ],
+  "main": "dist/intervals.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/FCOO/intervals.git"
