@@ -70,7 +70,11 @@
                 nowFloorMoment  = moment().floor(duration, this.options.durationUnit),
                 nextFloorMoment = moment(nowFloorMoment).add(duration, this.options.durationUnit);
 
-            intervalGroup.timeoutId = null;
+            if (intervalGroup.timeoutId){
+                window.clearTimeout(intervalGroup.timeoutId);
+                intervalGroup.timeoutId = null;
+            }
+
             if (!$.isEmptyObject(intervalGroup.list))
                 intervalGroup.timeoutId = window.setTimeout( function(){_this.intervalTimeout(duration);}, nextFloorMoment.diff(moment()) );
 
