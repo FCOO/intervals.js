@@ -30,11 +30,12 @@ http://FCOO.github.io/intervals/demo/
 ### Methods
 
     .addInterval(options)
-        options: {duration, fileNameOrData/fileNa<me/data, resolve, reject, context, wait, format, promiseOptions}
+        options: {duration, fileNameOrData/fileNa<me/data, resolve, resolveArguments, reject, context, wait, format, promiseOptions}
 		Add a reload of fileNameOrData with resolve-function
         Will reload every rounded duration. Eq duration = 10 ("10 minutes") => called HH:00, HH:10, HH:20,...
         If wait == false => also call the resolve on creation
 		resolve = function(data, interval:INTERVAL)
+		resolve = function(data, arg0, arg1,...argN) if options.resolveArguments = [arg0, arg1,..., argN] is given
     	reject = function(error, interval:INTERVAL)
 
 	INTERVAL represent one file or data being reloaded

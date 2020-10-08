@@ -154,7 +154,7 @@
                 //File-name is given => load file
                 var promiseOptions =
                         $.extend({
-                            resolve: this.options.resolve ? function(data) { _this.options.resolve(data,  _this); } : null,
+                            resolve: this.options.resolve ? $.proxy(this._resolve, this) : null,
                             reject : this.options.reject  ? function(error){ _this.options.reject (error, _this); } : null
                         }, this.options.promiseOptions);
 
@@ -170,7 +170,18 @@
             else
                 //Data is given => resolve them
                 this.options.resolve(this.options.fileNameOrData);
+        },
+        _resolve: function(data){
+            var arg = [data];
+            if (this.options.resolveArguments)
+                arg = arg.concat(this.options.resolveArguments);
+            else
+                arg = arg.concat([this]);
+            this.options.resolve.apply(null, arg);
         }
+
+
+
     };
 
     //Create default intervals

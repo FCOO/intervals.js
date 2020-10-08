@@ -20,8 +20,9 @@
         wait: false,
         duration      : 15,
         fileNameOrData: 'data/test.json',
-        resolve       : function(data, interval){
-            console.log(moment().second(), data);
+        resolveArguments: ['Davs', 'med','dig'],
+        resolve       : function(data, davs, med, dig){
+            console.log(moment().second(), data, davs, med, dig);
         },
         reject: function(error){ console.log('error', error); }
     });
