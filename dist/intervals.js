@@ -154,6 +154,10 @@
                 //File-name is given => load file
                 var promiseOptions =
                         $.extend({
+                            retries                 : this.options.retries,
+                            retriesDelay            : this.options.retriesDelay,
+                            useDefaultErrorHandler  : this.options.useDefaultErrorHandler,
+
                             resolve: this.options.resolve ? $.proxy(this._resolve, this) : null,
                             reject : this.options.reject  ? function(error){ _this.options.reject (error, _this); } : null
                         }, this.options.promiseOptions);

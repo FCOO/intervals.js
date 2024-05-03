@@ -14,36 +14,54 @@
 	<script src="bower_components.js"></script>
 	<script src="../src/intervals.js"></script>
 	<script>
-    intervals.options.durationUnit = 'seconds';
+        intervals.options.durationUnit = 'seconds';
 
-    intervals.addInterval({
-        wait: false,
-        duration      : 15,
-        fileNameOrData: 'data/test.json',
-        resolveArguments: ['Davs', 'med','dig'],
-        resolve       : function(data, davs, med, dig){
-            console.log(moment().second(), data, davs, med, dig);
-        },
-        reject: function(error){ console.log('error', error); }
-    });
+        Promise.defaultErrorHandler = function( error ){
+            console.log('*********************');
+            console.log('DEFAULT error-handler');
+            console.log('status=', error.status);
+            console.log('url=', error.url);
+            console.log('text=', error.text);
+            console.log('*********************');
+        }
+
+
 /*
-    intervals.addInterval({
-        duration      : 15,
-        fileNameOrData: 'data/test.txt',
-        resolve       : function(data){ console.log(data); },
-        wait          : true,
-        format        : 'text'
-    });
+        intervals.addInterval({
+            wait: false,
+            duration      : 15,
+            fileNameOrData: 'data/test.json',
+            resolveArguments: ['Davs', 'med','dig'],
+            resolve       : function(data, davs, med, dig){
+                console.log('test.json => ', moment().second(), data, davs, med, dig);
+            },
+            reject: function(error){ console.log('error', error); }
+        });
+//*        
 
-    intervals.addInterval({
-        duration      : 15,
-        fileNameOrData: 'data/testFINDESIKKE.txt',
-        resolve       : function(data, interval){ console.log(data); },
-        reject        : function(error, interval){ console.log('Reject', error.text, interval); },
-        wait          : true,
-        format        : 'text'
-    });
-*/
+/*
+        intervals.addInterval({
+            duration      : 15,
+            fileNameOrData: 'data/test.txt',
+            resolve       : function(data){ console.log('test.txt => ', data); },
+            wait          : true,
+            format        : 'text'
+        });
+//*/
+
+/*
+        intervals.addInterval({
+            duration      : 15,
+            fileNameOrData: 'data/testFINDESIKKE.txt',
+            resolve       : function(data, interval){ 'testFINDESIKKE.txt => ', console.log(data); },
+            reject        : function(error, interval){ console.log('Reject', error.text, interval); },
+            wait          : true,
+            retries       : 3,
+            retriesDelay  : 3*1000,
+            //useDefaultErrorHandler: false            
+            format        : 'text'
+        });
+//*/
     </script>
 </body>
 </html>
